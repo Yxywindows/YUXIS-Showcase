@@ -119,20 +119,12 @@
     .flow-step::before{counter-increment:path;content:"0" counter(path);display:block;margin-bottom:14px;color:#88d5bd;font-size:11px;font-weight:850;letter-spacing:.08em}
     .flow-step strong{display:block;font-size:12px;line-height:1.4}
     .flow-step span{display:block;margin-top:5px;color:#c0d8cf;font-size:10px;line-height:1.5}
-    .diagram-section{min-width:0;margin-top:8px}
-    .diagram-grid{display:grid;gap:18px}
-    .diagram-card{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;min-width:0;padding:clamp(18px,3vw,30px);border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:0 10px 30px rgba(23,53,46,.04)}
-    .diagram-visual{min-width:0}
-    .diagram-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;border:1px solid var(--line);border-radius:15px;background:linear-gradient(135deg,#f6faf7,#edf6f1);scrollbar-color:#9abbb0 #edf5f1}
-    .diagram-scroll img{display:block;width:100%;min-width:1000px;max-width:none;height:auto}
-    .diagram-hint{display:block;margin:7px 2px 0;color:var(--muted);font-size:12px}
-    .diagram-copy h3{margin:0 0 8px;font-size:clamp(21px,2.4vw,27px);line-height:1.25}
-    .diagram-copy>p{margin:0 0 12px;color:var(--soft);font-size:14px;line-height:1.75}
-    .diagram-copy ul{margin:0;padding-left:19px;color:var(--muted);font-size:13px;line-height:1.7}
-    .diagram-copy li+li{margin-top:4px}
-    .diagram-links{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:17px}
-    .diagram-links a{font-size:12px;font-weight:800}
-    .architecture-note{margin:17px 3px 0;color:var(--muted);font-size:12px;line-height:1.7}
+    #architecture{margin-top:8px}
+    #architecture figure{margin:24px 0 42px}
+    #architecture figure>a{display:block}
+    #architecture figure img{display:block;width:100%;height:auto}
+    #architecture figcaption{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:9px;color:var(--muted);font-size:12px}
+    #architecture figcaption a{font-weight:750}
     .about{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;padding:58px 0 0}
     .about-card{padding:22px;border:1px solid var(--line);border-radius:17px;background:#fff}
     .about-card h2{margin-bottom:8px;font-size:18px}
@@ -184,9 +176,6 @@
       .flow-section{margin-top:40px;padding:24px 18px;border-radius:20px}
       .flow-steps{grid-template-columns:repeat(2,1fr)}
       .flow-step{min-height:98px;padding:12px}
-      .diagram-card{padding:15px;border-radius:17px}
-      .diagram-copy h3{font-size:22px}
-      .diagram-copy>p{font-size:13px}
       .about{grid-template-columns:1fr;gap:12px;padding-top:36px}
       .about-card{padding:18px}
     }
@@ -280,23 +269,17 @@
       </section>
 
       <section class="flow-section" id="workflow" aria-labelledby="workflow-title"><div class="kicker">A human-led workflow</div><h2 id="workflow-title">Agent 做计算，人来判断与表达。</h2><p>演示展示的是一段协作流程：从目标、澄清、数据和工具，到可以复核的结果。地图样式不是自动生成的结论；人检查图层与字段后，才保存专题图。</p><div class="flow-steps"><div class="flow-step"><strong>提出目的</strong><span>先说明业务或研究上想弄清什么。</span></div><div class="flow-step"><strong>补充条件</strong><span>通过前端追问确定范围和口径。</span></div><div class="flow-step"><strong>选择并执行</strong><span>Agent 使用场景已授权的数据和工具。</span></div><div class="flow-step"><strong>查看证据</strong><span>读取计算结果、清单和图表。</span></div><div class="flow-step"><strong>人工制图保存</strong><span>核对成果后手动制作专题地图。</span></div></div></section>
-      <section class="diagram-section" id="architecture" aria-labelledby="architecture-title">
+      <section id="architecture" aria-labelledby="architecture-title">
         <div class="section-head"><div><div class="kicker">Architecture, memory & trust</div><h2 id="architecture-title">Agent 架构与记忆</h2><p>按 2026-10-22 已发布演示版本整理。记忆窗口和触发阈值是默认配置，不是实时统计；图示聚焦实际组件职责与数据流。</p></div></div>
-        <div class="diagram-grid">
-          <article class="diagram-card">
-            <div class="diagram-visual"><div class="diagram-scroll" role="region" tabindex="0" aria-label="Agent 总体架构图，可横向滚动查看"><img src="assets/diagrams/agent-architecture.svg" alt="从用户目标和授权上下文进入 LLM 规划，经服务端校验、持久队列、空间或受控 Python 处理，再回流到结果核验、界面展示与人工专题制图的架构图。"></div><p class="diagram-hint">小屏可横向滑动查看全图；点击下方“查看原图”可放大。</p></div>
-            <div class="diagram-copy"><h3>从目标到可复核成果</h3><p>前端澄清目标，LLM 选择下一步；服务端验证执行边界，真实结果再回到决策与交付核验。</p><ul><li>授权目录与有界记忆上下文为规划提供依据。</li><li>服务端检查目标契约、DAG、参数类型和数据权限版本。</li><li>空间结果、表格、图表和地图交付后，由用户手动制作专题图。</li></ul><div class="diagram-links"><a href="assets/diagrams/agent-architecture.svg" target="_blank" rel="noopener">查看原图</a><a href="assets/diagrams/agent-architecture.svg" download>下载 SVG</a></div></div>
-          </article>
-          <article class="diagram-card">
-            <div class="diagram-visual"><div class="diagram-scroll" role="region" tabindex="0" aria-label="记忆生命周期图，可横向滚动查看"><img src="assets/diagrams/memory-lifecycle.svg" alt="原始消息保留，较早已完成轮次形成经来源和权限校验的版本化记忆；每次运行按预算组装近期上下文，关键词检索来源经权限与版本校验后补充。"></div><p class="diagram-hint">小屏可横向滑动查看全图；点击下方“查看原图”可放大。</p></div>
-            <div class="diagram-copy"><h3>记忆如何形成与被引用</h3><p>历史消息持续保留。每次运行按预算组装近期上下文；按需关键词检索补充历史与授权资料，再经过来源和权限检查。</p><ul><li>摘要时默认保留最近 8 个完整轮次；较早已完成轮次累计达到 12,000 字符后触发增量摘要。</li><li>摘要包含目标、约束、更正、已完成事实、未决问题和可复用记忆；校验失败时保留原文。</li><li>stable 与 branch 标记记忆适用范围，两类记忆都保留版本；运行上下文默认最多 8 条近期消息。</li><li>正式知识库用于读取已收录资料。</li></ul><div class="diagram-links"><a href="assets/diagrams/memory-lifecycle.svg" target="_blank" rel="noopener">查看原图</a><a href="assets/diagrams/memory-lifecycle.svg" download>下载 SVG</a></div></div>
-          </article>
-          <article class="diagram-card">
-            <div class="diagram-visual"><div class="diagram-scroll" role="region" tabindex="0" aria-label="可信工具执行图，可横向滚动查看"><img src="assets/diagrams/trusted-execution.svg" alt="结构化工具动作经过允许列表、参数类型、依赖和权限校验后进入持久队列，由 Worker 调用固定的 PostGIS 或 Python 处理器并保存真实结果。"></div><p class="diagram-hint">小屏可横向滑动查看全图；点击下方“查看原图”可放大。</p></div>
-            <div class="diagram-copy"><h3>受控执行，结果可追溯</h3><p>模型提出结构化动作，服务端决定允许什么执行，并保留输入版本、来源和真实产物供后续核验。</p><ul><li>Worker 以租约和幂等机制处理持久任务。</li><li>空间计算与隔离子进程中的固定 Python 处理器分别生成结果图层、表格、图表或数值。</li><li>成果与来源及版本绑定，权限变化时按当前授权提供。</li></ul><div class="diagram-links"><a href="assets/diagrams/trusted-execution.svg" target="_blank" rel="noopener">查看原图</a><a href="assets/diagrams/trusted-execution.svg" download>下载 SVG</a></div></div>
-          </article>
-        </div>
-        <p class="architecture-note">记忆使用关键词检索并保留来源线索；正式知识库用于读取已收录资料。规划、目标审查与数据执行分工协作，结果按来源回溯。</p>
+        <h3>从目标到可复核成果</h3>
+        <p>前端确认用户条件，LLM 逐步规划；服务端验证并执行已授权动作，真实结果经过交付核验后展示。</p>
+        <figure><a href="assets/diagrams/agent-architecture.png" target="_blank" rel="noopener" aria-label="打开 Agent 总体架构高清图"><img src="assets/diagrams/agent-architecture.png" width="3840" height="2160" alt="Agent 总体架构流程图：用户目标、授权上下文、LLM 规划与审查、服务端验证、持久队列、PostGIS 与受控 Python、成果核验、界面展示和人工制图。" loading="lazy" decoding="async"></a><figcaption><a href="assets/diagrams/agent-architecture.png" download>查看 / 下载高清 PNG</a><a href="assets/diagrams/agent-architecture.svg" target="_blank" rel="noopener">查看同画 SVG</a></figcaption></figure>
+        <h3>记忆如何形成与被引用</h3>
+        <p>原始消息持续保留；摘要经格式、来源和权限校验后形成带版本的场景记忆，每次运行另按预算组装上下文。</p>
+        <figure><a href="assets/diagrams/memory-lifecycle.png" target="_blank" rel="noopener" aria-label="打开记忆生命周期高清图"><img src="assets/diagrams/memory-lifecycle.png" width="3840" height="2160" alt="记忆生命周期流程图：原始消息、阈值摘要、权限来源校验、稳定范围与分支记忆、关键词检索和按预算组装的运行上下文。" loading="lazy" decoding="async"></a><figcaption><a href="assets/diagrams/memory-lifecycle.png" download>查看 / 下载高清 PNG</a><a href="assets/diagrams/memory-lifecycle.svg" target="_blank" rel="noopener">查看同画 SVG</a></figcaption></figure>
+        <h3>受控执行，结果可追溯</h3>
+        <p>模型提出结构化动作，服务端检查允许范围与数据版本，持久任务交由固定处理器执行并保存真实产物。</p>
+        <figure><a href="assets/diagrams/trusted-execution.png" target="_blank" rel="noopener" aria-label="打开可信工具执行高清图"><img src="assets/diagrams/trusted-execution.png" width="3840" height="2160" alt="可信工具执行流程图：结构化动作、服务端准入、输入快照、持久队列、Worker、PostGIS 与受控 Python、真实成果核验和用户交付。" loading="lazy" decoding="async"></a><figcaption><a href="assets/diagrams/trusted-execution.png" download>查看 / 下载高清 PNG</a><a href="assets/diagrams/trusted-execution.svg" target="_blank" rel="noopener">查看同画 SVG</a></figcaption></figure>
       </section>
       <section class="about" aria-label="关于数据与演示"><article class="about-card"><h2>模拟演练与历史资料</h2><p>前两案使用明确标注的模拟数据，适合展示业务流程，不代表现实预测或商业调查。纽约街树案例使用 2015–2016 历史快照，NOAA 案例比较 2023 与 2024 两年数据。来源和研究口径限制了结论范围。</p></article><article class="about-card"><h2>观看完整流程实录</h2><p>通过视频、中文字幕和专题图，了解从用户目标、前端追问、数据分析到结果复核与地图保存的协作流程。</p></article></section>
     </div>

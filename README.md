@@ -8,17 +8,17 @@ YUXIS 把日常业务与研究问题接入空间数据分析流程：前端先�
 
 在[案例网站的架构与记忆板块](https://yxywindows.github.io/YUXIS-Showcase/#architecture)查看三张流程图，或阅读[架构与记忆说明](docs/architecture.md)：
 
-- [Agent 总体架构](assets/diagrams/agent-architecture.svg)：目标澄清、规划、服务端验证、持久执行与成果交付。
+- [Agent 总体架构高清 PNG](assets/diagrams/agent-architecture.png) · [同画 SVG](assets/diagrams/agent-architecture.svg)：目标澄清、规划、服务端验证、持久执行与成果交付。
 
-![Agent 总体架构图：从目标澄清到结果交付](assets/diagrams/agent-architecture.svg)
+![Agent 总体架构图：从目标澄清到结果交付](assets/diagrams/agent-architecture.png)
 
-- [记忆生命周期](assets/diagrams/memory-lifecycle.svg)：摘要与来源校验、版本化记忆、关键词检索和有界上下文。
+- [记忆生命周期高清 PNG](assets/diagrams/memory-lifecycle.png) · [同画 SVG](assets/diagrams/memory-lifecycle.svg)：摘要与来源校验、版本化记忆、关键词检索和有界上下文。
 
-![记忆生命周期图：摘要校验、版本化记忆与关键词检索](assets/diagrams/memory-lifecycle.svg)
+![记忆生命周期图：摘要校验、版本化记忆与关键词检索](assets/diagrams/memory-lifecycle.png)
 
-- [可信工具执行](assets/diagrams/trusted-execution.svg)：允许列表、权限与版本检查、持久队列、固定处理器和结果核验。
+- [可信工具执行高清 PNG](assets/diagrams/trusted-execution.png) · [同画 SVG](assets/diagrams/trusted-execution.svg)：允许列表、权限与版本检查、持久队列、固定处理器和结果核验。
 
-![可信工具执行图：服务端校验、持久任务与结果核验](assets/diagrams/trusted-execution.svg)
+![可信工具执行图：服务端校验、持久任务与结果核验](assets/diagrams/trusted-execution.png)
 
 ## 四段演示
 
