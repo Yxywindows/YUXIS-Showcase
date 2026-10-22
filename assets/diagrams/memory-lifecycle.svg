@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1100" role="img" aria-labelledby="title desc">
+  <title id="title">YUXIS 对话记忆生命周期</title>
+  <desc id="desc">原始消息持续保留。摘要时默认保留最近八个完整轮次；较早已完成内容累计达到一万二千字符后，由 LLM 增量整理六类记忆，经过格式、来源和权限校验，形成滚动摘要及稳定范围或特定分支范围的场景记忆。新问题的近期历史、初始目标、摘要和保存笔记按预算直接组装进有界上下文；按需关键词检索的结果作为补充，并经过权限、版本和来源校验。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#187f78"/></marker>
+    <marker id="arrow-soft" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#629a8a"/></marker>
+    <style>
+      .title{font:700 30px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#18372f}
+      .sub{font:20px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#536c63}
+      .head{font:700 22px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#10463c}
+      .body{font:19px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#385a51}
+      .label{font:700 19px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#187f78}
+      .card{fill:#fff;stroke:#c9dfd5;stroke-width:2}
+      .inner{fill:#edf6f1;stroke:#d2e6dc;stroke-width:1.5}
+      .line{fill:none;stroke:#187f78;stroke-width:3;marker-end:url(#arrow)}
+      .softline{fill:none;stroke:#629a8a;stroke-width:3;marker-end:url(#arrow-soft)}
+      .dash{fill:none;stroke:#629a8a;stroke-width:3;stroke-dasharray:9 8;marker-end:url(#arrow-soft)}
+    </style>
+  </defs>
+  <rect width="1440" height="1100" rx="28" fill="#f5f8f6"/>
+  <text x="48" y="52" class="title">对话记忆如何形成、校验与检索</text>
+  <text x="48" y="84" class="sub">历史内容持续保留；摘要与检索只把有来源且当前可访问的信息带入运行上下文。</text>
+
+  <rect x="30" y="125" width="245" height="205" rx="18" class="card"/>
+  <rect x="30" y="125" width="245" height="8" rx="4" fill="#65b69e"/>
+  <text x="52" y="168" class="head">原始消息历史</text>
+  <text x="52" y="211" class="body">完整对话持续保留</text>
+  <text x="52" y="246" class="body">作为后续回溯来源</text>
+  <text x="52" y="290" class="body">摘要失败时仍可查看</text>
+
+  <rect x="310" y="125" width="245" height="205" rx="18" class="card"/>
+  <rect x="310" y="125" width="245" height="8" rx="4" fill="#72b8ab"/>
+  <text x="332" y="168" class="head">整理触发范围</text>
+  <text x="332" y="207" class="body">摘要时保留最近 8 个</text>
+  <text x="332" y="238" class="body">完整轮次在近期历史</text>
+  <text x="332" y="278" class="body">更早已完成内容累计</text>
+  <text x="332" y="309" class="label">达到 12,000 字符</text>
+
+  <rect x="590" y="125" width="245" height="205" rx="18" class="card"/>
+  <rect x="590" y="125" width="245" height="8" rx="4" fill="#17877d"/>
+  <text x="612" y="168" class="head">LLM 增量摘要</text>
+  <text x="612" y="207" class="body">目标 · 约束 · 更正</text>
+  <text x="612" y="238" class="body">已完成事实</text>
+  <text x="612" y="269" class="body">未决问题 · 可复用记忆</text>
+  <text x="612" y="309" class="body">只整理已完成旧轮次</text>
+
+  <rect x="870" y="125" width="245" height="205" rx="18" class="card"/>
+  <rect x="870" y="125" width="245" height="8" rx="4" fill="#236d62"/>
+  <text x="892" y="168" class="head">内容与来源校验</text>
+  <text x="892" y="203" class="body">检查摘要格式结构</text>
+  <text x="892" y="231" class="body">不可读来源不引用</text>
+  <text x="892" y="259" class="body">版本变化可作历史证据</text>
+  <text x="892" y="287" class="body">当前用户明确更正</text>
+  <text x="892" y="315" class="body">有来源才替代旧项</text>
+
+  <rect x="1150" y="125" width="260" height="205" rx="18" class="card"/>
+  <rect x="1150" y="125" width="260" height="8" rx="4" fill="#187f78"/>
+  <text x="1172" y="168" class="head">版本化场景记忆</text>
+  <text x="1172" y="207" class="body">滚动摘要持续更新</text>
+  <text x="1172" y="238" class="body">stable 稳定范围记忆</text>
+  <text x="1172" y="269" class="body">branch 特定分支记忆</text>
+  <text x="1172" y="309" class="body">两者均保留版本</text>
+
+  <path d="M275 228H300" class="line"/>
+  <path d="M555 228H580" class="line"/>
+  <path d="M835 228H860" class="line"/>
+  <path d="M1115 228H1140" class="line"/>
+  <path d="M992 330V368" class="dash"/>
+  <rect x="825" y="368" width="335" height="47" rx="15" class="inner"/>
+  <text x="847" y="399" class="body">校验失败：原始内容保留</text>
+
+  <rect x="30" y="455" width="1380" height="72" rx="18" class="inner"/>
+  <text x="54" y="485" class="label">可按关键词检索的来源</text>
+  <text x="54" y="514" class="body">原始历史消息 · 滚动摘要 · 场景记忆 · 当前授权图层与任务 · 正式知识库已收录资料</text>
+  <path d="M150 330V455" class="softline"/>
+  <path d="M1280 330V455" class="softline"/>
+  <path d="M520 527V570" class="line"/>
+
+  <rect x="30" y="570" width="250" height="200" rx="18" class="card"/>
+  <rect x="30" y="570" width="250" height="8" rx="4" fill="#65b69e"/>
+  <text x="52" y="614" class="head">新的用户问题</text>
+  <text x="52" y="658" class="body">开始新的分析或回查</text>
+  <text x="52" y="697" class="body">提供当前场景与目标</text>
+  <text x="52" y="740" class="body">进入语义规划流程</text>
+
+  <rect x="320" y="570" width="350" height="200" rx="18" class="card"/>
+  <rect x="320" y="570" width="350" height="8" rx="4" fill="#72b8ab"/>
+  <text x="342" y="614" class="head">按需关键词检索</text>
+  <text x="342" y="658" class="body">检索历史、摘要与记忆</text>
+  <text x="342" y="697" class="body">也检索授权图层、任务</text>
+  <text x="342" y="730" class="body">及已收录知识资料</text>
+  <text x="342" y="758" class="body">来源最多 8 条</text>
+
+  <rect x="710" y="570" width="300" height="200" rx="18" class="card"/>
+  <rect x="710" y="570" width="300" height="8" rx="4" fill="#397d70"/>
+  <text x="732" y="614" class="head">权限与来源回溯</text>
+  <text x="732" y="658" class="body">检查当前访问权限</text>
+  <text x="732" y="697" class="body">核对来源与版本有效性</text>
+  <text x="732" y="740" class="body">只返回可用的相关内容</text>
+
+  <rect x="1050" y="570" width="360" height="200" rx="18" class="card"/>
+  <rect x="1050" y="570" width="360" height="8" rx="4" fill="#187f78"/>
+  <text x="1072" y="614" class="head">有界运行上下文</text>
+  <text x="1072" y="658" class="body">最近最多 8 条消息</text>
+  <text x="1072" y="692" class="body">初始目标 · 滚动摘要</text>
+  <text x="1072" y="726" class="body">检索摘录 · 用户保存笔记</text>
+  <text x="1072" y="758" class="body">进入当前规划</text>
+
+  <path d="M280 670H310" class="line"/>
+  <path d="M670 670H700" class="line"/>
+  <path d="M1010 670H1040" class="line"/>
+  <path d="M155 770V805H1230V770" class="softline"/>
+  <rect x="460" y="784" width="430" height="38" rx="18" fill="#f5f8f6"/>
+  <text x="480" y="810" class="label">近期历史按预算直接组装</text>
+
+  <rect x="30" y="825" width="1380" height="210" rx="20" class="card"/>
+  <text x="56" y="872" class="head">两个不同的“8”</text>
+  <rect x="56" y="895" width="630" height="106" rx="16" class="inner"/>
+  <text x="80" y="934" class="body">最近 8 个完整轮次</text>
+  <text x="80" y="973" class="body">用于决定哪些旧轮次可进入摘要整理。</text>
+  <rect x="720" y="895" width="660" height="106" rx="16" class="inner"/>
+  <text x="744" y="934" class="body">最近最多 8 条消息</text>
+  <text x="744" y="973" class="body">是新问题运行上下文的近期消息上限。</text>
+  <text x="56" y="1018" class="body">检索采用关键词并保留来源线索；正式知识库用于读取已收录资料。</text>
+</svg>

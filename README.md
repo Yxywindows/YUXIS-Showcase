@@ -4,6 +4,22 @@ YUXIS 把日常业务与研究问题接入空间数据分析流程：前端先�
 
 **[打开案例展示网站](https://yxywindows.github.io/YUXIS-Showcase/)** · [暴雨应急](https://yxywindows.github.io/YUXIS-Showcase/#storm) · [便利店拓店](https://yxywindows.github.io/YUXIS-Showcase/#store) · [纽约街树](https://yxywindows.github.io/YUXIS-Showcase/#nyc) · [NOAA 气候](https://yxywindows.github.io/YUXIS-Showcase/#noaa)
 
+## 架构与记忆
+
+在[案例网站的架构与记忆板块](https://yxywindows.github.io/YUXIS-Showcase/#architecture)查看三张流程图，或阅读[架构与记忆说明](docs/architecture.md)：
+
+- [Agent 总体架构](assets/diagrams/agent-architecture.svg)：目标澄清、规划、服务端验证、持久执行与成果交付。
+
+![Agent 总体架构图：从目标澄清到结果交付](assets/diagrams/agent-architecture.svg)
+
+- [记忆生命周期](assets/diagrams/memory-lifecycle.svg)：摘要与来源校验、版本化记忆、关键词检索和有界上下文。
+
+![记忆生命周期图：摘要校验、版本化记忆与关键词检索](assets/diagrams/memory-lifecycle.svg)
+
+- [可信工具执行](assets/diagrams/trusted-execution.svg)：允许列表、权限与版本检查、持久队列、固定处理器和结果核验。
+
+![可信工具执行图：服务端校验、持久任务与结果核验](assets/diagrams/trusted-execution.svg)
+
 ## 四段演示
 
 | 案例 | 类型 | 时长 | 封面 | 视频 | 中文字幕 | 页面介绍 |

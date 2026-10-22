@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1040" role="img" aria-labelledby="title desc">
+  <title id="title">YUXIS 可信工具执行流程</title>
+  <desc id="desc">模型提出结构化工具动作，服务端按允许列表检查参数、类型、依赖 DAG、目标和数据权限版本。任务及输入版本写入持久队列，Worker 以租约和幂等机制领取，并分派到 PostGIS 空间计算或隔离子进程中的固定 Python 处理器。真实产物连同来源与版本保存，回流下一步决策和交付核验，再显示在界面并由人手动制作专题图。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#187f78"/></marker>
+    <marker id="soft" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#629a8a"/></marker>
+    <style>
+      .title{font:700 30px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#18372f}
+      .sub{font:20px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#536c63}
+      .head{font:700 22px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#10463c}
+      .body{font:19px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#385a51}
+      .label{font:700 19px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#187f78}
+      .card{fill:#fff;stroke:#c9dfd5;stroke-width:2}
+      .line{fill:none;stroke:#187f78;stroke-width:3;marker-end:url(#arrow)}
+      .softline{fill:none;stroke:#629a8a;stroke-width:3;marker-end:url(#soft)}
+      .dash{fill:none;stroke:#629a8a;stroke-width:3;stroke-dasharray:9 8;marker-end:url(#soft)}
+    </style>
+  </defs>
+  <rect width="1440" height="1040" rx="28" fill="#f5f8f6"/>
+  <text x="48" y="52" class="title">结构化动作如何成为可核验成果</text>
+  <text x="48" y="84" class="sub">模型提出动作；服务端验证规则并控制持久任务、权限与执行路径。</text>
+
+  <rect x="40" y="130" width="260" height="205" rx="19" class="card"/>
+  <rect x="40" y="130" width="260" height="9" rx="5" fill="#65b69e"/>
+  <text x="62" y="176" class="head">结构化工具动作</text>
+  <text x="62" y="220" class="body">从允许目录选择工具</text>
+  <text x="62" y="261" class="body">提交参数、依赖与目标</text>
+  <text x="62" y="302" class="body">引用授权输入数据</text>
+
+  <rect x="350" y="130" width="365" height="205" rx="19" class="card"/>
+  <rect x="350" y="130" width="365" height="9" rx="5" fill="#17877d"/>
+  <text x="375" y="176" class="head">服务端允许列表与验证</text>
+  <text x="375" y="218" class="body">工具、参数与数据类型</text>
+  <text x="375" y="256" class="body">依赖 DAG 与目标要求</text>
+  <text x="375" y="294" class="body">数据权限和来源版本</text>
+  <text x="375" y="324" class="body">验证通过后才进入队列</text>
+
+  <rect x="765" y="130" width="255" height="205" rx="19" class="card"/>
+  <rect x="765" y="130" width="255" height="9" rx="5" fill="#397d70"/>
+  <text x="788" y="176" class="head">持久任务</text>
+  <text x="788" y="220" class="body">保存任务状态</text>
+  <text x="788" y="261" class="body">记录输入数据版本</text>
+  <text x="788" y="302" class="body">排队等待处理</text>
+
+  <rect x="1070" y="130" width="330" height="205" rx="19" class="card"/>
+  <rect x="1070" y="130" width="330" height="9" rx="5" fill="#187f78"/>
+  <text x="1095" y="176" class="head">Worker 领取与分派</text>
+  <text x="1095" y="220" class="body">按租约领取任务</text>
+  <text x="1095" y="261" class="body">幂等地记录执行状态</text>
+  <text x="1095" y="302" class="body">调用固定处理器</text>
+
+  <path d="M300 232H340" class="line"/>
+  <path d="M715 232H755" class="line"/>
+  <path d="M1020 232H1060" class="line"/>
+  <path d="M1135 335C1135 386 840 388 680 430" class="softline"/>
+  <path d="M1295 335V430" class="softline"/>
+
+  <rect x="475" y="440" width="380" height="180" rx="20" class="card"/>
+  <rect x="475" y="440" width="380" height="9" rx="5" fill="#2f8a72"/>
+  <text x="502" y="488" class="head">PostGIS 空间计算</text>
+  <text x="502" y="530" class="body">按授权资源执行空间任务</text>
+  <text x="502" y="570" class="body">生成版本化结果图层</text>
+  <text x="502" y="606" class="body">输入与来源随任务关联</text>
+
+  <rect x="940" y="440" width="380" height="180" rx="20" class="card"/>
+  <rect x="940" y="440" width="380" height="9" rx="5" fill="#58a994"/>
+  <text x="967" y="488" class="head">隔离子进程 · 固定 Python</text>
+  <text x="967" y="530" class="body">调用登记的分析处理器</text>
+  <text x="967" y="570" class="body">生成表格、图表或数值</text>
+  <text x="967" y="606" class="body">处理代码由服务端提供</text>
+
+  <path d="M665 620V650H850V665" class="softline"/>
+  <path d="M1130 620V650H1010V665" class="softline"/>
+  <rect x="640" y="675" width="600" height="140" rx="20" class="card"/>
+  <rect x="640" y="675" width="600" height="9" rx="5" fill="#397d70"/>
+  <text x="670" y="724" class="head">保存来源、版本与真实产物</text>
+  <text x="670" y="766" class="body">空间结果图层 · 表格 · 图表 · 数值</text>
+  <text x="670" y="800" class="body">当前权限决定产物能否继续提供</text>
+
+  <path d="M640 742H20V370H170V345" class="dash"/>
+  <rect x="24" y="375" width="380" height="42" rx="18" fill="#f5f8f6"/>
+  <text x="42" y="404" class="label">真实结果回流到下一步决策</text>
+
+  <path d="M780 815V855H420V933" class="line"/>
+  <path d="M590 997H665" class="line"/>
+  <path d="M1005 997H1055" class="line"/>
+  <rect x="250" y="943" width="340" height="90" rx="18" class="card"/>
+  <text x="275" y="981" class="head">必交成果核验</text>
+  <text x="275" y="1017" class="body">按用户目标核对真实产物</text>
+  <rect x="675" y="943" width="330" height="90" rx="18" class="card"/>
+  <text x="700" y="981" class="head">界面展示结果</text>
+  <text x="700" y="1017" class="body">对话 · 图表 · 地图</text>
+  <rect x="1065" y="943" width="335" height="90" rx="18" class="card"/>
+  <text x="1087" y="981" class="head">人工制作专题图</text>
+  <text x="1087" y="1017" class="body">检查与保存地图视图</text>
+</svg>

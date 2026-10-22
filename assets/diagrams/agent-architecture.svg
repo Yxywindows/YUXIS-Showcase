@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1240" role="img" aria-labelledby="title desc">
+  <title id="title">YUXIS Agent 总体架构</title>
+  <desc id="desc">用户与前端确认目标，授权目录和有界上下文进入同一运行中的 LLM 规划与独立目标审查。服务端验证目标契约、DAG、参数类型和权限版本，再把任务交给持久队列。Worker 调用 PostGIS 或固定 Python 处理器，真实结果回流继续决策或交付核验，最终进入界面并由用户手动制作专题图。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#187f78"/></marker>
+    <marker id="arrow-soft" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#629a8a"/></marker>
+    <style>
+      .title{font:700 30px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#18372f}
+      .sub{font:20px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#536c63}
+      .head{font:700 24px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#10463c}
+      .body{font:20px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#385a51}
+      .small{font:19px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#536c63}
+      .label{font:700 19px "Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#187f78}
+      .card{fill:#fff;stroke:#c9dfd5;stroke-width:2}
+      .inner{fill:#edf6f1;stroke:#d2e6dc;stroke-width:1.5}
+      .line{fill:none;stroke:#187f78;stroke-width:3;marker-end:url(#arrow)}
+      .softline{fill:none;stroke:#629a8a;stroke-width:3;marker-end:url(#arrow-soft)}
+      .dash{fill:none;stroke:#629a8a;stroke-width:3;stroke-dasharray:9 8;marker-end:url(#arrow-soft)}
+    </style>
+  </defs>
+  <rect width="1440" height="1240" rx="28" fill="#f5f8f6"/>
+  <text x="54" y="53" class="title">从用户目标到可复核成果</text>
+  <text x="54" y="86" class="sub">LLM 负责规划与下一步决策；服务端掌握权限、执行与数据边界。</text>
+
+  <rect x="55" y="120" width="275" height="218" rx="20" class="card"/>
+  <rect x="55" y="120" width="275" height="9" rx="5" fill="#65b69e"/>
+  <text x="80" y="166" class="head">用户与前端</text>
+  <text x="80" y="205" class="body">提出业务或研究目标</text>
+  <text x="80" y="238" class="body">回答必要追问并确认条件</text>
+  <text x="80" y="288" class="small">目标或条件变化时回到</text>
+  <text x="80" y="316" class="small">用户确认，不靠模型猜测</text>
+
+  <rect x="375" y="120" width="285" height="218" rx="20" class="card"/>
+  <rect x="375" y="120" width="285" height="9" rx="5" fill="#72b8ab"/>
+  <text x="400" y="166" class="head">授权目录与上下文</text>
+  <text x="400" y="208" class="body">当前允许访问的数据目录</text>
+  <text x="400" y="242" class="body">有界历史与保存的记忆</text>
+  <text x="400" y="290" class="small">只提供当前权限内的依据</text>
+  <text x="400" y="318" class="small">不替代服务端权限检查</text>
+
+  <rect x="705" y="120" width="305" height="218" rx="20" class="card"/>
+  <rect x="705" y="120" width="305" height="9" rx="5" fill="#17877d"/>
+  <text x="730" y="166" class="head">LLM 职责 · 同一运行</text>
+  <rect x="730" y="185" width="255" height="53" rx="12" class="inner"/>
+  <text x="750" y="220" class="body">规划与逐步决策</text>
+  <rect x="730" y="250" width="255" height="66" rx="12" class="inner"/>
+  <text x="750" y="278" class="body">独立目标审查</text>
+  <text x="750" y="304" class="small">同一运行内独立调用</text>
+
+  <rect x="1055" y="120" width="330" height="218" rx="20" class="card"/>
+  <rect x="1055" y="120" width="330" height="9" rx="5" fill="#236d62"/>
+  <text x="1080" y="166" class="head">服务端规则验证</text>
+  <text x="1080" y="207" class="body">GoalContract 与依赖 DAG</text>
+  <text x="1080" y="241" class="body">参数类型、字段与版本</text>
+  <text x="1080" y="275" class="body">数据权限与来源版本</text>
+  <text x="1080" y="315" class="small">验证通过后才允许执行</text>
+
+  <path d="M330 228H365" class="line"/>
+  <path d="M660 228H695" class="line"/>
+  <path d="M1010 228H1045" class="line"/>
+
+  <path d="M855 338C855 372 830 386 805 386H190C165 386 145 367 145 345" class="dash"/>
+  <rect x="335" y="363" width="355" height="34" rx="17" fill="#f5f8f6"/>
+  <text x="353" y="388" class="label">需要补条件时回前端确认</text>
+
+  <path d="M1220 338V420" class="line"/>
+  <rect x="1055" y="420" width="330" height="136" rx="20" class="card"/>
+  <rect x="1055" y="420" width="330" height="9" rx="5" fill="#187f78"/>
+  <text x="1080" y="467" class="head">持久任务与队列</text>
+  <text x="1080" y="507" class="body">保存任务状态与输入版本</text>
+  <text x="1080" y="538" class="small">Worker 按队列领取处理</text>
+
+  <path d="M1120 556C1120 593 930 590 820 624" class="softline"/>
+  <path d="M1300 556V624" class="softline"/>
+
+  <rect x="650" y="625" width="330" height="182" rx="20" class="card"/>
+  <rect x="650" y="625" width="330" height="9" rx="5" fill="#2f8a72"/>
+  <text x="675" y="672" class="head">PostGIS 空间计算</text>
+  <text x="675" y="713" class="body">按授权图层与参数执行</text>
+  <text x="675" y="747" class="body">输出可追溯的空间结果</text>
+  <text x="675" y="783" class="small">服务端执行，不由模型代替</text>
+
+  <rect x="1005" y="625" width="330" height="182" rx="20" class="card"/>
+  <rect x="1005" y="625" width="330" height="9" rx="5" fill="#58a994"/>
+  <text x="1030" y="672" class="head">受控 Python 处理器</text>
+  <text x="1030" y="713" class="body">固定算法与隔离子进程</text>
+  <text x="1030" y="747" class="body">生成表格、图表或数值</text>
+  <text x="1030" y="783" class="small">不运行任意模型代码</text>
+
+  <path d="M815 807V830H950V848" class="softline"/>
+  <path d="M1170 807V830H1155V848" class="softline"/>
+  <rect x="850" y="858" width="500" height="132" rx="20" class="card"/>
+  <rect x="850" y="858" width="500" height="9" rx="5" fill="#397d70"/>
+  <text x="880" y="903" class="head">真实结果与来源版本</text>
+  <text x="880" y="944" class="body">结果图层 · 表格 · 图表 · 数值</text>
+  <text x="880" y="975" class="small">记录输入资源、版本与实际产物</text>
+
+  <path d="M850 921H760" class="line"/>
+  <rect x="430" y="858" width="330" height="132" rx="20" class="card"/>
+  <rect x="430" y="858" width="330" height="9" rx="5" fill="#65b69e"/>
+  <text x="455" y="903" class="head">继续决策 / 交付核验</text>
+  <text x="455" y="944" class="body">依据真实结果决定下一步</text>
+  <text x="455" y="975" class="small">完成时核对用户要求的成果</text>
+
+  <path d="M595 990V1030" class="line"/>
+  <rect x="265" y="1030" width="500" height="150" rx="20" class="card"/>
+  <rect x="265" y="1030" width="500" height="9" rx="5" fill="#65b69e"/>
+  <text x="295" y="1077" class="head">对话 · 表格 · 图表 · 地图</text>
+  <text x="295" y="1119" class="body">向用户展示实际计算结果和证据</text>
+  <text x="295" y="1157" class="small">用户检查后决定如何表达</text>
+  <path d="M765 1105H835" class="line"/>
+  <rect x="835" y="1030" width="500" height="150" rx="20" class="card"/>
+  <rect x="835" y="1030" width="500" height="9" rx="5" fill="#187f78"/>
+  <text x="865" y="1077" class="head">用户手动制作专题图</text>
+  <text x="865" y="1119" class="body">检查图层、字段、图例与表达</text>
+  <text x="865" y="1157" class="small">人工保存最终地图视图</text>
+
+  <path d="M1350 935H1408V354H860V344" class="dash"/>
+  <rect x="1085" y="339" width="256" height="37" rx="18" fill="#f5f8f6"/>
+  <text x="1101" y="365" class="label">真实结果回流继续决策</text>
+  <text x="58" y="1215" class="small">服务端与数据库执行边界由系统控制；辅助步骤调整可在当前任务中继续。</text>
+</svg>
